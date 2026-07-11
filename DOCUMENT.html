@@ -32,13 +32,15 @@
             max-width: 1200px;
             display: flex;
             justify-content: center;
+            gap: 30px; /* This creates space between your shirt and pants */
+            flex-wrap: wrap; /* Keeps it looking great on phone screens */
         }
 
         .product-card {
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 350px;
+            width: 300px; /* Slightly adjusted to fit side-by-side perfectly */
             text-align: center;
             padding: 20px;
             transition: transform 0.2s;
@@ -93,11 +95,15 @@
     <main class="store-container">
         <div class="product-card">
            <img src="iNiko Merch Shirt 1 fata.jfif" alt="iNiko Merch">
-            
             <h2 class="product-title">iNiko Official Shirt</h2>
-            
             <div class="product-price">60,00 RON</div>
-            
+            <button class="buy-btn">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="Pantaloni iNiko.jfif" alt="iNiko Pants">
+            <h2 class="product-title">iNiko Pants</h2>
+            <div class="product-price">60,00 RON</div>
             <button class="buy-btn">Add to Cart</button>
         </div>
     </main>
