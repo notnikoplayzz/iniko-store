@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iNiko Merch</title>
     <style>
-        /* Simple, clean styling for your store */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f9f9f9;
@@ -27,20 +26,28 @@
             letter-spacing: 1px;
         }
 
+        .banner {
+            width: 90%;
+            max-width: 800px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
         .store-container {
             margin: 40px auto;
             max-width: 1200px;
             display: flex;
             justify-content: center;
-            gap: 30px; /* This creates space between your shirt and pants */
-            flex-wrap: wrap; /* Keeps it looking great on phone screens */
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
         .product-card {
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 300px; /* Slightly adjusted to fit side-by-side perfectly */
+            width: 300px;
             text-align: center;
             padding: 20px;
             transition: transform 0.2s;
@@ -92,6 +99,8 @@
         iNiko Store
     </header>
 
+    <img src="Vara asta.jfif" alt="iNiko Banner" class="banner">
+
     <main class="store-container">
         <div class="product-card">
            <img src="iNiko Merch Shirt 1 fata.jfif" alt="iNiko Merch">
@@ -101,9 +110,9 @@
         </div>
 
         <div class="product-card">
-            <img src="Pantaloni iNiko.jfif" alt="iNiko Pants">
+           <img src="Pantaloni iNiko.jfif" alt="iNiko Pants">
             <h2 class="product-title">iNiko Pants</h2>
-            <div class="product-price">60,00 RON</div>
+            <div class="product-price">80,00 RON</div>
             <button class="buy-btn">Add to Cart</button>
         </div>
     </main>
