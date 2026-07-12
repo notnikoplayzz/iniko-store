@@ -5,39 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iNiko Store</title>
     <style>
-        /* Dark Theme Styles */
         body { font-family: sans-serif; text-align: center; background: #121212; color: #e0e0e0; margin: 0; padding: 0; }
         header { background: #000; color: #fff; padding: 20px; border-bottom: 2px solid #333; }
-        
         .product-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; justify-items: center; }
-        
         .product-card { width: 90%; max-width: 300px; padding: 15px; background: #1e1e1e; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 1px solid #333; }
         .product-card img { width: 100%; height: auto; border-radius: 4px; }
         .buy-btn { background: #333; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; margin-top: 10px; border-radius: 4px; transition: 0.3s; }
         .buy-btn:hover { background: #555; }
-        
-        /* Draggable Cart Styles (Dark Mode) */
-        #cart-modal { 
-            display: none; 
-            position: fixed; 
-            top: 10%; 
-            left: 5%; 
-            width: 90%; 
-            max-width: 400px; 
-            background: #1e1e1e; 
-            padding: 20px; 
-            border: 2px solid #444; 
-            z-index: 10; 
-            border-radius: 8px;
-            cursor: move;
-            color: #fff;
-        }
+        #cart-modal { display: none; position: fixed; top: 10%; left: 5%; width: 90%; max-width: 400px; background: #1e1e1e; padding: 20px; border: 2px solid #444; z-index: 10; border-radius: 8px; cursor: move; color: #fff; }
     </style>
 </head>
 <body>
 
     <header><h1>iNiko Store</h1></header>
-
     <button style="padding: 15px; margin: 20px; cursor: pointer;" onclick="document.getElementById('cart-modal').style.display='block'">View Shopping Cart</button>
 
     <div id="cart-modal">
@@ -52,13 +32,13 @@
             <img src="iNiko Merch Shirt 1 fata.jfif" alt="Shirt">
             <h3>iNiko Official Shirt</h3>
             <p>40 RON</p>
-            <button class="buy-btn" onclick="addToCart('iNiko Official Shirt', 60)">Add to Cart</button>
+            <button class="buy-btn" onclick="addToCart('iNiko Official Shirt', 40)">Add to Cart</button>
         </div>
         <div class="product-card">
             <img src="Pantaloni iNiko.jfif" alt="Pants">
             <h3>iNiko Pants</h3>
             <p>40 RON</p>
-            <button class="buy-btn" onclick="addToCart('iNiko Pants', 60)">Add to Cart</button>
+            <button class="buy-btn" onclick="addToCart('iNiko Pants', 40)">Add to Cart</button>
         </div>
         <div class="product-card">
             <img src="Sapca iNiko.jfif" alt="Cap">
@@ -70,7 +50,7 @@
             <img src="Plushie iNiko.jfif" alt="Plushie">
             <h3>iNiko Plushie</h3>
             <p>60 RON</p>
-            <button class="buy-btn" onclick="addToCart('iNiko Plushie', 100)">Add to Cart</button>
+            <button class="buy-btn" onclick="addToCart('iNiko Plushie', 60)">Add to Cart</button>
         </div>
         <div class="product-card">
             <img src="Ochelari iNiko.jfif" alt="Sunglasses">
@@ -92,27 +72,11 @@
             document.getElementById('total-price').innerText = total;
         }
 
-        // Draggable Logic
         const modal = document.getElementById("cart-modal");
-        let isDragging = false;
-        let offsetX, offsetY;
-
-        modal.addEventListener("mousedown", (e) => {
-            isDragging = true;
-            offsetX = e.clientX - modal.offsetLeft;
-            offsetY = e.clientY - modal.offsetTop;
-        });
-
-        document.addEventListener("mousemove", (e) => {
-            if (isDragging) {
-                modal.style.left = (e.clientX - offsetX) + "px";
-                modal.style.top = (e.clientY - offsetY) + "px";
-            }
-        });
-
-        document.addEventListener("mouseup", () => {
-            isDragging = false;
-        });
+        let isDragging = false, offsetX, offsetY;
+        modal.addEventListener("mousedown", (e) => { isDragging = true; offsetX = e.clientX - modal.offsetLeft; offsetY = e.clientY - modal.offsetTop; });
+        document.addEventListener("mousemove", (e) => { if (isDragging) { modal.style.left = (e.clientX - offsetX) + "px"; modal.style.top = (e.clientY - offsetY) + "px"; } });
+        document.addEventListener("mouseup", () => { isDragging = false; });
     </script>
 </body>
 </html>
