@@ -85,25 +85,47 @@
             <p>50 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Coloring Book', 50)">Add to Cart</button>
         </div>
+        <div class="product-card">
+            <a href="tastatura.html" class="product-link">
+                <img src="Tastatura iNiko.jfif" alt="Keyboard">
+                <h3>Tastatura iNiko</h3>
+            </a>
+            <p>150 RON</p>
+            <button class="buy-btn" onclick="addToCart('Tastatura iNiko', 150)">Add to Cart</button>
+        </div>
     </main>
 
     <script>
         let total = 0;
+        let cart = {};
+
         function addToCart(name, price) {
+            if (!cart[name]) {
+                cart[name] = { count: 1, price: price };
+            } else {
+                cart[name].count++;
+            }
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
             const list = document.getElementById('cart-items');
-            if (total === 0) list.innerHTML = '';
-            let li = document.createElement('li');
-            li.innerText = name + " - " + price + " RON";
-            list.appendChild(li);
-            total += price;
+            list.innerHTML = '';
+            total = 0;
+            for (let item in cart) {
+                let li = document.createElement('li');
+                li.innerText = `${item} x${cart[item].count} - ${cart[item].count * cart[item].price} RON`;
+                list.appendChild(li);
+                total += (cart[item].count * cart[item].price);
+            }
             document.getElementById('total-price').innerText = total;
         }
 
         function placeOrder() {
             alert("Order placed successfully! (Demo mode only)");
-            document.getElementById('cart-items').innerHTML = '<li>Empty</li>';
-            total = 0;
-            document.getElementById('total-price').innerText = '0';
+            cart = {};
+            updateCartDisplay();
+            document.getElementById('cart-modal').style.display='none';
         }
 
         const modal = document.getElementById("cart-modal");
