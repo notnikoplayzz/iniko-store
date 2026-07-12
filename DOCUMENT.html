@@ -2,80 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iNiko Merch</title>
+    <title>iNiko Store</title>
     <style>
-        body { font-family: sans-serif; background-color: #f9f9f9; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
-        header { background-color: #111; color: #fff; width: 100%; text-align: center; padding: 20px 0; font-size: 24px; font-weight: bold; }
+        body { font-family: sans-serif; text-align: center; background: #f9f9f9; }
+        .product-card { display: inline-block; width: 250px; margin: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .product-card img { width: 100%; border-radius: 4px; }
+        .buy-btn { background: #111; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; }
         
-        #cart-section { background: #fff; width: 90%; max-width: 600px; margin-top: 20px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-        #cart-items { list-style: none; padding: 0; text-align: left; margin: 10px 0; }
-        #cart-items li { padding: 5px 0; border-bottom: 1px solid #eee; }
-        
-        .store-container { margin: 40px auto; max-width: 1200px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .product-card { background: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 250px; text-align: center; padding: 20px; }
-        .buy-btn { background-color: #111; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; border-radius: 4px; margin-top: 10px; }
+        /* Modal Popup Styles */
+        #cart-modal { display: none; position: fixed; top: 20%; left: 30%; width: 40%; background: white; padding: 20px; border: 2px solid #333; z-index: 10; }
     </style>
 </head>
 <body>
 
-    <header>iNiko Store</header>
+    <header><h1>iNiko Store</h1></header>
 
-    <div id="cart-section">
+    <button onclick="document.getElementById('cart-modal').style.display='block'">View Shopping Cart</button>
+
+    <div id="cart-modal">
         <h2>Your Cart</h2>
-        <ul id="cart-items"><li>Cart is empty</li></ul>
-        <hr>
+        <ul id="cart-items"><li>Empty</li></ul>
         <p><strong>Total: <span id="total-price">0</span> RON</strong></p>
+        <button onclick="document.getElementById('cart-modal').style.display='none'">Close</button>
     </div>
 
-    <main class="store-container">
+    <main>
         <div class="product-card">
+            <img src="iNiko Merch Shirt 1 fata.jfif" alt="Shirt">
             <h3>iNiko Official Shirt</h3>
             <p>60 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Official Shirt', 60)">Add to Cart</button>
         </div>
-
-        <div class="product-card">
-            <h3>iNiko Pants</h3>
-            <p>60 RON</p>
-            <button class="buy-btn" onclick="addToCart('iNiko Pants', 60)">Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <h3>iNiko Cap</h3>
-            <p>50 RON</p>
-            <button class="buy-btn" onclick="addToCart('iNiko Cap', 50)">Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <h3>iNiko Plushie</h3>
-            <p>100 RON</p>
-            <button class="buy-btn" onclick="addToCart('iNiko Plushie', 100)">Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <h3>iNiko Sunglasses</h3>
-            <p>65 RON</p>
-            <button class="buy-btn" onclick="addToCart('iNiko Sunglasses', 65)">Add to Cart</button>
-        </div>
-    </main>
+        </main>
 
     <script>
         let total = 0;
-        let itemsAdded = false;
-        const cartList = document.getElementById('cart-items');
-        const totalDisplay = document.getElementById('total-price');
-
         function addToCart(name, price) {
-            if (!itemsAdded) {
-                cartList.innerHTML = '';
-                itemsAdded = true;
-            }
+            const list = document.getElementById('cart-items');
+            if (total === 0) list.innerHTML = '';
             let li = document.createElement('li');
             li.innerText = name + " - " + price + " RON";
-            cartList.appendChild(li);
+            list.appendChild(li);
             total += price;
-            totalDisplay.innerText = total;
+            document.getElementById('total-price').innerText = total;
         }
     </script>
 </body>
