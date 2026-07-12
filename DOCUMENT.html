@@ -8,15 +8,27 @@
         body { font-family: sans-serif; text-align: center; background: #f9f9f9; margin: 0; padding: 0; }
         header { background: #111; color: #fff; padding: 20px; }
         
-        /* Mobile-First Grid */
         .product-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; justify-items: center; }
         
         .product-card { width: 90%; max-width: 300px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .product-card img { width: 100%; height: auto; border-radius: 4px; }
         .buy-btn { background: #111; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; margin-top: 10px; border-radius: 4px; }
         
-        /* Cart Popup */
-        #cart-modal { display: none; position: fixed; top: 10%; left: 5%; width: 90%; max-width: 400px; background: white; padding: 20px; border: 2px solid #333; z-index: 10; border-radius: 8px; }
+        /* Draggable Cart Styles */
+        #cart-modal { 
+            display: none; 
+            position: fixed; 
+            top: 10%; 
+            left: 5%; 
+            width: 90%; 
+            max-width: 400px; 
+            background: white; 
+            padding: 20px; 
+            border: 2px solid #333; 
+            z-index: 10; 
+            border-radius: 8px;
+            cursor: move;
+        }
     </style>
 </head>
 <body>
@@ -76,6 +88,28 @@
             total += price;
             document.getElementById('total-price').innerText = total;
         }
+
+        // Draggable Logic
+        const modal = document.getElementById("cart-modal");
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        modal.addEventListener("mousedown", (e) => {
+            isDragging = true;
+            offsetX = e.clientX - modal.offsetLeft;
+            offsetY = e.clientY - modal.offsetTop;
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            if (isDragging) {
+                modal.style.left = (e.clientX - offsetX) + "px";
+                modal.style.top = (e.clientY - offsetY) + "px";
+            }
+        });
+
+        document.addEventListener("mouseup", () => {
+            isDragging = false;
+        });
     </script>
 </body>
 </html>
