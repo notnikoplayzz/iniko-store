@@ -5,11 +5,11 @@
     <title>iNiko Store</title>
     <style>
         body { font-family: sans-serif; text-align: center; background: #f9f9f9; }
-        .product-card { display: inline-block; width: 250px; margin: 15px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .product-card img { width: 100%; border-radius: 4px; }
-        .buy-btn { background: #111; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; }
+        .product-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+        .product-card { width: 200px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .product-card img { width: 100%; height: auto; border-radius: 4px; }
+        .buy-btn { background: #111; color: white; border: none; padding: 10px; width: 100%; cursor: pointer; margin-top: 10px; }
         
-        /* Modal Popup Styles */
         #cart-modal { display: none; position: fixed; top: 20%; left: 30%; width: 40%; background: white; padding: 20px; border: 2px solid #333; z-index: 10; }
     </style>
 </head>
@@ -26,14 +26,38 @@
         <button onclick="document.getElementById('cart-modal').style.display='none'">Close</button>
     </div>
 
-    <main>
+    <main class="product-container">
         <div class="product-card">
             <img src="iNiko Merch Shirt 1 fata.jfif" alt="Shirt">
             <h3>iNiko Official Shirt</h3>
             <p>60 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Official Shirt', 60)">Add to Cart</button>
         </div>
-        </main>
+        <div class="product-card">
+            <img src="Pantaloni iNiko.jfif" alt="Pants">
+            <h3>iNiko Pants</h3>
+            <p>60 RON</p>
+            <button class="buy-btn" onclick="addToCart('iNiko Pants', 60)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="Sapca iNiko.jfif" alt="Cap">
+            <h3>iNiko Cap</h3>
+            <p>50 RON</p>
+            <button class="buy-btn" onclick="addToCart('iNiko Cap', 50)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="Plushie iNiko.jfif" alt="Plushie">
+            <h3>iNiko Plushie</h3>
+            <p>100 RON</p>
+            <button class="buy-btn" onclick="addToCart('iNiko Plushie', 100)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="Ochelari iNiko.jfif" alt="Sunglasses">
+            <h3>iNiko Sunglasses</h3>
+            <p>65 RON</p>
+            <button class="buy-btn" onclick="addToCart('iNiko Sunglasses', 65)">Add to Cart</button>
+        </div>
+    </main>
 
     <script>
         let total = 0;
