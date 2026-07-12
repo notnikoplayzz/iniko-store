@@ -12,7 +12,7 @@
         .product-card img { width: 100%; height: auto; border-radius: 4px; }
         .buy-btn { background: #333; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; margin-top: 10px; border-radius: 4px; transition: 0.3s; }
         .buy-btn:hover { background: #555; }
-        
+        .product-link { text-decoration: none; color: inherit; }
         #cart-modal { display: none; position: fixed; top: 10%; left: 5%; width: 90%; max-width: 400px; background: #1e1e1e; padding: 20px; border: 2px solid #444; z-index: 10; border-radius: 8px; cursor: move; color: #fff; }
         .input-field { width: 100%; padding: 8px; margin: 5px 0; box-sizing: border-box; }
     </style>
@@ -26,52 +26,62 @@
         <h2>Your Cart</h2>
         <ul id="cart-items" style="text-align: left;"><li>Empty</li></ul>
         <p><strong>Total: <span id="total-price">0</span> RON</strong></p>
-        
         <hr>
         <h3>Payment Details (Demo)</h3>
         <input type="text" class="input-field" placeholder="Card Number">
         <input type="text" class="input-field" placeholder="MM/YY">
         <input type="text" class="input-field" placeholder="CVV">
         <button class="buy-btn" onclick="placeOrder()">Place Order</button>
-        
         <br><br>
         <button style="padding: 10px; cursor: pointer;" onclick="document.getElementById('cart-modal').style.display='none'">Close</button>
     </div>
 
     <main class="product-container">
         <div class="product-card">
-            <img src="iNiko Merch Shirt 1 fata.jfif" alt="Shirt">
-            <h3>iNiko Official Shirt</h3>
+            <a href="shirt.html" class="product-link">
+                <img src="iNiko Merch Shirt 1 fata.jfif" alt="Shirt">
+                <h3>iNiko Official Shirt</h3>
+            </a>
             <p>60 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Official Shirt', 60)">Add to Cart</button>
         </div>
         <div class="product-card">
-            <img src="Pantaloni iNiko.jfif" alt="Pants">
-            <h3>iNiko Pants</h3>
+            <a href="pants.html" class="product-link">
+                <img src="Pantaloni iNiko.jfif" alt="Pants">
+                <h3>iNiko Pants</h3>
+            </a>
             <p>60 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Pants', 60)">Add to Cart</button>
         </div>
         <div class="product-card">
-            <img src="Sapca iNiko.jfif" alt="Cap">
-            <h3>iNiko Cap</h3>
+            <a href="cap.html" class="product-link">
+                <img src="Sapca iNiko.jfif" alt="Cap">
+                <h3>iNiko Cap</h3>
+            </a>
             <p>50 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Cap', 50)">Add to Cart</button>
         </div>
         <div class="product-card">
-            <img src="Plushie iNiko.jfif" alt="Plushie">
-            <h3>iNiko Plushie</h3>
+            <a href="plushie.html" class="product-link">
+                <img src="Plushie iNiko.jfif" alt="Plushie">
+                <h3>iNiko Plushie</h3>
+            </a>
             <p>100 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Plushie', 100)">Add to Cart</button>
         </div>
         <div class="product-card">
-            <img src="Ochelari iNiko.jfif" alt="Sunglasses">
-            <h3>iNiko Sunglasses</h3>
+            <a href="sunglasses.html" class="product-link">
+                <img src="Ochelari iNiko.jfif" alt="Sunglasses">
+                <h3>iNiko Sunglasses</h3>
+            </a>
             <p>65 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Sunglasses', 65)">Add to Cart</button>
         </div>
         <div class="product-card">
-            <img src="Carte De Colorat iNiko.jfif" alt="Coloring Book">
-            <h3>iNiko Coloring Book</h3>
+            <a href="coloringbook.html" class="product-link">
+                <img src="Carte De Colorat iNiko.jfif" alt="Coloring Book">
+                <h3>iNiko Coloring Book</h3>
+            </a>
             <p>50 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Coloring Book', 50)">Add to Cart</button>
         </div>
@@ -91,7 +101,6 @@
 
         function placeOrder() {
             alert("Order placed successfully! (Demo mode only)");
-            // Clear cart
             document.getElementById('cart-items').innerHTML = '<li>Empty</li>';
             total = 0;
             document.getElementById('total-price').innerText = '0';
