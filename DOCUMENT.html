@@ -100,6 +100,15 @@
             <p>150 RON</p>
             <button class="buy-btn" onclick="addToCart('iNiko Keyboard', 150)">Add to Cart</button>
         </div>
+        <!-- Keychain -->
+        <div class="product-card">
+            <a href="breloc.html" class="product-link">
+                <img src="iNiko Breloc.png" alt="Keychain">
+                <h3>iNiko Keychain</h3>
+            </a>
+            <p>19.99 RON</p>
+            <button class="buy-btn" onclick="addToCart('iNiko Keychain', 19.99)">Add to Cart</button>
+        </div>
     </main>
 
     <script>
@@ -121,11 +130,11 @@
             total = 0;
             for (let item in cart) {
                 let li = document.createElement('li');
-                li.innerText = `${item} x${cart[item].count} - ${cart[item].count * cart[item].price} RON`;
+                li.innerText = `${item} x${cart[item].count} - ${(cart[item].count * cart[item].price).toFixed(2)} RON`;
                 list.appendChild(li);
                 total += (cart[item].count * cart[item].price);
             }
-            document.getElementById('total-price').innerText = total;
+            document.getElementById('total-price').innerText = total.toFixed(2);
         }
 
         function placeOrder() {
